@@ -16,7 +16,6 @@ const App = () => {
     //   "method": "GET",
     //   "headers": {
     //     "x-rapidapi-host": "thesportsdb.p.rapidapi.com",
-    //     "x-rapidapi-key": "afa44382abmsh12f90709531c0bap103591jsnceba8c2639f8"
     //   }
     // });
     // const response = await fetch("https://api.lineups.com/nba/fetch/roster/2020/atlanta-hawks?format=json", {
@@ -26,7 +25,6 @@ const App = () => {
     //   "method": "GET",
     //   "headers": {
     //     "x-rapidapi-host": "api-nba-v1.p.rapidapi.com",
-    //     "x-rapidapi-key": "afa44382abmsh12f90709531c0bap103591jsnceba8c2639f8"
     //   }
     // });
     // const loadData = [...jsonData.api.teams];
