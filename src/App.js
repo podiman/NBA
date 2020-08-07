@@ -1,26 +1,49 @@
-import React from 'react';
-import logo from './logo.svg';
+import React, { useEffect } from 'react';
+import { Nav } from './Nav';
+import { NbaProvider } from './NbaContext';
+import { Header } from './Header';
 import './App.css';
+import { PlayerCard } from './ui/PlayerCard';
+import { SearchBar } from './SearchBar';
 
-function App() {
+const App = () => {
+  useEffect(() => {
+    getAllNbaTeamDetails();
+  }, []);
+
+  const getAllNbaTeamDetails = async () => {
+    // const response = await fetch("https://thesportsdb.p.rapidapi.com/1/lookup_all_teams.php?id=4387", {
+    //   "method": "GET",
+    //   "headers": {
+    //     "x-rapidapi-host": "thesportsdb.p.rapidapi.com",
+    //     "x-rapidapi-key": "afa44382abmsh12f90709531c0bap103591jsnceba8c2639f8"
+    //   }
+    // });
+    // const response = await fetch("https://api.lineups.com/nba/fetch/roster/2020/atlanta-hawks?format=json", {
+    //   "method": "GET",
+    // });
+    // const response = await fetch("https://api-nba-v1.p.rapidapi.com/teams/teamId/1", {
+    //   "method": "GET",
+    //   "headers": {
+    //     "x-rapidapi-host": "api-nba-v1.p.rapidapi.com",
+    //     "x-rapidapi-key": "afa44382abmsh12f90709531c0bap103591jsnceba8c2639f8"
+    //   }
+    // });
+    // const loadData = [...jsonData.api.teams];
+    // const data = await response.json();
+    // console.log(data.roster);
+    // console.log(response.json());
+  };
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
+    <NbaProvider>
+      <div className="App">
+        <Nav />
+        <Header />
+        <SearchBar />
+        <PlayerCard />
+      </div>
+    </NbaProvider>
   );
-}
+};
 
 export default App;
