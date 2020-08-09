@@ -35,27 +35,38 @@ const PlayerPhoto = styled.div`
 `;
 
 export const PlayerCard = () => {
-  const [players, setPlayers] = useContext(NbaContext);
+  const [players, setPlayers, loading, setLoading] = useContext(NbaContext);
   const classes = useStyles();
-  players.forEach(player => {
-    // console.log(player.photo_url);
-    console.log(player.poster);
-  })
+  players.forEach(element => {
+    console.log(element.poster);
+  });
+
   return (
     <PageContent>
       <Grid container spacing={3}>
         {players.map((player, key) => (
           <Grid item xs={3}>
-            <Paper className={classes.paper}>
+          {player.poster ? <Paper className={classes.paper}>
+              <PlayerPhoto>
+                <img style={{width: "100%"}} src={player.poster} alt={player.full_name}></img>
+              </PlayerPhoto>
+              <Typography variant="subtitle1" gutterBottom>
+                {player.full_name}
+              </Typography>
+              <div>Age: {player.age}</div>
+              <Button color="primary">Learn more</Button>
+            </Paper> :
+              <Paper className={classes.paper}>
               <PlayerPhoto>
                 <img src={player.photo_url} alt={player.full_name}></img>
               </PlayerPhoto>
               <Typography variant="subtitle1" gutterBottom>
                 {player.full_name}
               </Typography>
-              <div>Age: {player.poster}</div>
+              <div>Age: {player.age}</div>
               <Button color="primary">Learn more</Button>
             </Paper>
+          }
           </Grid>
         ))}
       </Grid>
